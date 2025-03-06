@@ -6,13 +6,13 @@ def update_plot(line, ax, spectrum, fs, N):
     """
     Aktualisiert das Frequenzspektrum im Plot.
 
-    :param line: Matplotlib-Linienobjekt
+    :param line: Linienobjekt der Matplotlib-Plot
     :param ax: Matplotlib Achsen-Objekt
     :param spectrum: FFT-Werte zur Darstellung
     :param fs: Sampling-Rate in Hz
     :param N: Anzahl der Samples
     """
-    freqs = np.fft.rfftfreq(N, d=1 / fs)  # Frequenzachse neu berechnen
+    freqs = np.fft.rfftfreq(N, d=1 / fs)  # Frequenzachse mit rfft-Funktion
 
     if len(freqs) != len(spectrum):  # Falls Shapes nicht übereinstimmen, trimmen
         min_len = min(len(freqs), len(spectrum))

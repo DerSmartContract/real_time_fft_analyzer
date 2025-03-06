@@ -9,5 +9,6 @@ def process_audio(audio_data, N):
     :param N: Anzahl der Samples für die FFT
     :return: Amplitudenspektrum
     """
-    spectrum = np.abs(np.fft.rfft(audio_data, n=N)) / N  # RFFT für reale Signale nutzen
+    spectrum = np.abs(np.fft.rfft(audio_data, n=N)) / (N / 2)  # Korrekte Normalisierung
+    spectrum[1:] *= 2  # Skalierung für einseitige FFT, aber nicht für DC-Komponente
     return spectrum
